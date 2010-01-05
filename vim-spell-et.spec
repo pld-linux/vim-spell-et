@@ -1,19 +1,18 @@
 Summary:	Estonian dictionaries for VIMspell
 Name:		vim-spell-et
 Version:	1.0
-Release:	1
+Release:	2
 License:    free, see http://www.eki.ee/eki/licence.html
 Group:		Applications/Editors/Vim
 Source0:	ftp://ftp.linux.ee/pub/openoffice/contrib/dictionaries/et_EE.zip
 # Source0-md5:	2a1e97d61132c537aa03df4d0fee9b89
-URL:		http://www.sjp.pl/slownik/ort/
 BuildRequires:	unzip
 BuildRequires:	vim >= 4:7.0
-Requires:	vim-rt >= 4:7.0.017-2
+Requires:	vim-rt >= 4:7.2.170
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_vimdatadir	%{_datadir}/vim/vimfiles
+%define		_vimdatadir	%{_datadir}/vim
 
 %description
 Estonian dictionaries for VIMspell.
