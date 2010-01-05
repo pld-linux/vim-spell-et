@@ -6,7 +6,6 @@ Release:	3
 License:	free, see http://www.eki.ee/eki/licence.html
 Group:		Applications/Editors/Vim
 BuildRequires:	myspell-%{dict}
-BuildRequires:	unzip
 BuildRequires:	vim >= 4:7.0
 Requires:	vim-rt >= 4:7.2.170
 BuildArch:	noarch
