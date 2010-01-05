@@ -1,11 +1,11 @@
+%define		dict	et_EE
 Summary:	Estonian dictionaries for VIMspell
 Name:		vim-spell-et
 Version:	1.0
-Release:	2
-License:    free, see http://www.eki.ee/eki/licence.html
+Release:	3
+License:	free, see http://www.eki.ee/eki/licence.html
 Group:		Applications/Editors/Vim
-Source0:	ftp://ftp.linux.ee/pub/openoffice/contrib/dictionaries/et_EE.zip
-# Source0-md5:	2a1e97d61132c537aa03df4d0fee9b89
+BuildRequires:	myspell-%{dict}
 BuildRequires:	unzip
 BuildRequires:	vim >= 4:7.0
 Requires:	vim-rt >= 4:7.2.170
@@ -18,10 +18,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Estonian dictionaries for VIMspell.
 
 %prep
-%setup -q -c
+%setup -qcT
+# fails if myspell package installed without doc
+cp -a %{_docdir}/myspell-%{dict}-$(rpm -q --qf %{V} myspell-%{dict})/README_et_EE.txt* .
+[ *.gz ] && gzip -d *.gz
 
 %build
-vim -u NONE -c 'set enc=utf-8' -c 'mkspell! et et_EE' -c q
+vim -u NONE -c 'set enc=utf-8' -c 'mkspell! et %{_datadir}/myspell/et_EE' -c q
 
 %install
 rm -rf $RPM_BUILD_ROOT
